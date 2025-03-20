@@ -38,18 +38,19 @@ This project provides an API for summarizing text using the Google Gemini API. I
 4.  **Start PostgreSQL with Docker Compose:**
 
     ```bash
-    sudo docker-compose up -d postgres
+    docker compose up -d postgres
     ```
 
-5.  **Initialize Prisma:**
+    *Note: if you encounter port conflicts, particularly with port 5434, see troubleshooting below.*
+
+5.  **Generate and Migrate the Database:**
 
     ```bash
-    npx prisma init
+    npx prisma generate
+    npx prisma migrate dev --name init
     ```
 
-    * This will create a `prisma` directory with a `schema.prisma` file.
-    * Ensure that the `datasource db` block in `schema.prisma` reflects the `DATABASE_URL` from your `.env` file.
-    * Add the user model in schema.prisma
+    * This will create the database tables based on your `schema.prisma` file. Ensure that the `datasource db` block in `schema.prisma` reflects the `DATABASE_URL` from your `.env` file. If you haven't already, add the user model in schema.prisma:
 
     ```prisma
     model User {
@@ -60,16 +61,7 @@ This project provides an API for summarizing text using the Google Gemini API. I
     }
     ```
 
-6.  **Generate and Migrate the Database:**
-
-    ```bash
-    npx prisma generate
-    npx prisma migrate dev --name init
-    ```
-
-    * This will create the database tables based on your `schema.prisma` file.
-
-7.  **Start the Application:**
+6.  **Start the Application:**
 
     ```bash
     npm run dev
@@ -201,3 +193,12 @@ This project provides an API for summarizing text using the Google Gemini API. I
             "transcription": "A long text that will be summarized."
         }
         ```
+
+## Troubleshooting
+
+* **Port Conflict (5434):** If you encounter an error like `address already in use` when starting PostgreSQL with Docker Compose, it's likely that port 5434 is already in use on your host machine. This is often due to Docker's internal usage. To resolve this:
+    * Edit your `docker-compose.yml` file and change the port mapping for the `postgres` service to a different port (e.g., `5435:5432`).
+    * Run `docker compose down` and then `docker compose up -d postgres` again.
+    * Update your `.env` file and any application connection strings to use the new port.
+* **Database Migration Issues:** If you encounter errors during `npx prisma migrate dev`, ensure that your `DATABASE_URL` in `.env` is correct and that the PostgreSQL container is running.
+* **API Key Issues:** If you receive errors related to the Gemini API, double-check that your `GEMINI_API_KEY` is valid and correctly set in your `.env` file.
