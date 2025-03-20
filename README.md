@@ -30,8 +30,8 @@ This project provides an API for summarizing text using the Google Gemini API. I
     * Add the following variables, replacing the placeholders with your actual values:
 
         ```dotenv
-        JWT_SECRET=rU7lol75MEPzuhd
-        GEMINI_API_KEY=AIzaSyC3Jh4fCez72
+        JWT_SECRET=myjwtsecret
+        GEMINI_API_KEY=mygeminiapikey
         DATABASE_URL="postgresql://admin:secret@localhost:5434/aitasks?schema=public"
         ```
 
