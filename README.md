@@ -30,8 +30,8 @@ This project provides an API for summarizing text using the Google Gemini API. I
     * Add the following variables, replacing the placeholders with your actual values:
 
         ```dotenv
-        JWT_SECRET=myjwtsecret
-        GEMINI_API_KEY=mygeminiapikey
+        JWT_SECRET=rU7lol75MEPzuhd
+        GEMINI_API_KEY=AIzaSyC3Jh4fCez72
         DATABASE_URL="postgresql://admin:secret@localhost:5434/aitasks?schema=public"
         ```
 
@@ -53,10 +53,10 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
     ```prisma
     model User {
-      id       Int    @id @default(autoincrement())
-      email    String @unique
-      password String
-      name     String
+        id       Int    @id @default(autoincrement())
+        email    String @unique
+        password String
+        name     String
     }
     ```
 
@@ -75,7 +75,7 @@ This project provides an API for summarizing text using the Google Gemini API. I
     npm run dev
     ```
 
-    * The API will be running on `http://localhost:<port>` (check logs for the port).
+    * The API will be running on `http://localhost:3000` (or the port specified in your `.env` file or application configuration. Check the console logs for the exact port number).
 
 ## API Endpoints
 
@@ -86,13 +86,14 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
         ```json
         {
-          "email": "test@example.com",
-          "password": "securePassword123",
-          "name": "Arley"
+            "email": "test@example.com",
+            "password": "securePassword123",
+            "name": "Arley"
         }
         ```
 
     * **Example cURL request:**
+
         ```bash
         curl -X POST -H "Content-Type: application/json" -d '{"email": "test@example.com", "password": "securePassword123", "name": "Arley"}' http://localhost:3000/api/v1/user
         ```
@@ -104,12 +105,13 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
         ```json
         {
-          "email": "test@example.com",
-          "password": "securePassword123"
+            "email": "test@example.com",
+            "password": "securePassword123"
         }
         ```
 
     * **Example cURL request:**
+
         ```bash
         curl -X POST -H "Content-Type: application/json" -d '{"email": "test@example.com", "password": "securePassword123"}' http://localhost:3000/api/v1/login
         ```
@@ -119,7 +121,7 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
         ```json
         {
-          "token": "your_jwt_token"
+            "token": "your_jwt_token"
         }
         ```
 
@@ -130,7 +132,7 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
         ```json
         {
-          "transcription": "Detective Reynolds, I need a complete rundown of the Vance murder case..."
+            "transcription": "Detective Reynolds, I need a complete rundown of the Vance murder case..."
         }
         ```
 
@@ -140,6 +142,7 @@ This project provides an API for summarizing text using the Google Gemini API. I
         * `Authorization: Bearer <your_jwt_token>`
 
     * **Example cURL request:**
+
         ```bash
         curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer your_jwt_token" -d '{"transcription": "Detective Reynolds, I need a complete rundown of the Vance murder case..."}' http://localhost:3000/api/v1/summarize
         ```
@@ -149,8 +152,8 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
         ```json
         {
-          "originalText": "Detective Reynolds, I need a complete rundown of the Vance murder case...",
-          "summary": "Summary of the murder case..."
+            "originalText": "Detective Reynolds, I need a complete rundown of the Vance murder case...",
+            "summary": "Summary of the murder case..."
         }
         ```
 
@@ -164,9 +167,9 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
         ```json
         {
-          "email": "[email address removed]",
-          "password": "postmanPassword",
-          "name": "Postman User"
+            "email": "[email address removed]",
+            "password": "postmanPassword",
+            "name": "Postman User"
         }
         ```
 
@@ -178,8 +181,8 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
         ```json
         {
-          "email": "[email address removed]",
-          "password": "postmanPassword"
+            "email": "[email address removed]",
+            "password": "postmanPassword"
         }
         ```
 
@@ -195,6 +198,6 @@ This project provides an API for summarizing text using the Google Gemini API. I
 
         ```json
         {
-          "transcription": "A long text that will be summarized."
+            "transcription": "A long text that will be summarized."
         }
         ```
