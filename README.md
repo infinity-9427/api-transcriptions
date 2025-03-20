@@ -38,7 +38,7 @@ This project provides an API for summarizing text using the Google Gemini API. I
 4.  **Start PostgreSQL with Docker Compose:**
 
     ```bash
-    docker compose up -d postgres
+   sudo docker-compose up -d postgres
     ```
 
     *Note: if you encounter port conflicts, particularly with port 5434, see troubleshooting below.*
