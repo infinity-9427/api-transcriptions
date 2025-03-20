@@ -30,15 +30,15 @@ This project provides an API for summarizing text using the Google Gemini API. I
     * Add the following variables, replacing the placeholders with your actual values:
 
         ```dotenv
-        JWT_SECRET=rU7lol75MEPzuhd
-        GEMINI_API_KEY=AIzaSyC3Jh4fCez72
+        JWT_SECRET=myjwtsecret
+        GEMINI_API_KEY=mygeminiapikey
         DATABASE_URL="postgresql://admin:secret@localhost:5434/aitasks?schema=public"
         ```
 
 4.  **Start PostgreSQL with Docker Compose:**
 
     ```bash
-    docker compose up -d postgres
+    sudo docker-compose up -d postgres
     ```
 
 5.  **Initialize Prisma:**
@@ -88,14 +88,14 @@ This project provides an API for summarizing text using the Google Gemini API. I
         {
             "email": "test@example.com",
             "password": "securePassword123",
-            "name": "Arley"
+            "name": "username"
         }
         ```
 
     * **Example cURL request:**
 
         ```bash
-        curl -X POST -H "Content-Type: application/json" -d '{"email": "test@example.com", "password": "securePassword123", "name": "Arley"}' http://localhost:3000/api/v1/user
+        curl -X POST -H "Content-Type: application/json" -d '{"email": "test@example.com", "password": "securePassword123", "name": "username"}' http://localhost:3000/api/v1/user
         ```
 
 ### 2.  **User Login (POST /api/v1/login)**
